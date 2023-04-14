@@ -3,7 +3,6 @@ import axios, { Axios } from 'axios';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useQuery } from '@tanstack/react-query';
 
 import Router from 'next/router';
 import AuthService from '@/services/auth';
@@ -12,20 +11,8 @@ import { loginSchema } from '@/services/auth';
 
 const Form = () => {
   const [loading, setLoading] = useState<boolean>(false);
-
   const [totp, setTotp] = useState<string>('');
   const [backupToken, setBackupToken] = useState<string>('');
-
-  //FORM VALIDATION
-
-  //   const schema = z.object({
-  //     email: z.string(),
-  //     password: z.string().min(2),
-  //     totp: z.string().optional(),
-  //     backupToken: z.string().optional()
-  //   });
-
-  //   type LoginInputs = z.infer<typeof schema>;
 
   const {
     register,
@@ -73,11 +60,6 @@ const Form = () => {
         setLoading(false);
       });
   };
-
-  //FORM QUERY
-  //   useQuery('login', () => {
-  //     axios.get('');
-  //   });
 
   return (
     <form

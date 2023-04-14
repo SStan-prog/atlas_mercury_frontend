@@ -1,4 +1,4 @@
-import Axios from 'axios';
+import Axios from '@/axios';
 import { z } from 'zod';
 
 export const loginSchema = z.object({
@@ -31,7 +31,7 @@ export class AuthService {
       headers,
     };
 
-    return Axios.post('http://localhost:5000/admin/api/v1/login', doc, options);
+    return Axios.post('/admin/api/v1/login', doc, options);
   }
 
   getToken() {
@@ -51,7 +51,6 @@ export class AuthService {
 
   getAuthorizationHeader() {
     const token = this.getToken();
-
     return `Bearer ${token}`;
   }
 }
